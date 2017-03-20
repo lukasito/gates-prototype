@@ -20,7 +20,7 @@ public class ApiController extends GatingController {
     ApiRequestModel requestModel = bodyAs(ApiRequestModel.class);
 
     // Request compatibility layer
-    gating(new ApiRequestContext(requestModel));
+    requestGating(new ApiRequestContext(requestModel));
 
     // CORE translation after normalized model (version unspecific)
     DomainModel domainModel = new DomainModel();
@@ -37,7 +37,7 @@ public class ApiController extends GatingController {
     apiResponseModel.setMerchantId(domainModel.getMerchantId().toString());
 
     // Response compatibility layer
-    gating(new ApiResponseContext(apiResponseModel));
+    responseGating(new ApiResponseContext(apiResponseModel));
 
     return toXml(apiResponseModel);
   }
