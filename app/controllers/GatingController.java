@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 
 public abstract class GatingController extends Controller {
 
-  private static Pattern versionPattern = Pattern.compile("^application\\/vnd.company.v(\\d+)");
+  private static Pattern versionPattern = Pattern.compile("^application\\/vnd.company.v(\\d+)\\+.*");
 
   private Map<GateName, Gate<? extends GatingContext>> gates = ImmutableMap.<GateName, Gate<? extends GatingContext>>builder()
     .put(GateName.ALLOW_TYPE, new AllowTypeGate())
